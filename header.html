@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+      .hvr-underline-reveal {
+          display: inline-block;
+          vertical-align: middle;
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          -moz-osx-font-smoothing: grayscale;
+          position: relative;
+          overflow: hidden;
+      }
+
+      .hvr-underline-reveal:before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: #ccc;
+          height: 4px;
+          -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+          -webkit-transition-property: transform;
+          transition-property: transform;
+          -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+          -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+      }
+
+      .hvr-underline-reveal:hover:before, .hvr-underline-reveal:focus:before, .hvr-underline-reveal:active:before {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+      }
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="headerCtrl" id="custom-bootstrap-menu" class="navbar navbar-dark bg-dark"
+     role="navigation">
+  <modal title="Deconectare" visible="showModal">
+    <form role="form">
+      <h3 align="center">Ești sigur că vrei ieși din sistem?</h3>
+      </br>
+      </br>
+      <button class="btn btn-default" ng-click="logout()">Da, sunt sigur!</button>
+      <button style="float: right;" class="btn btn-default" ng-click="toggleModal()">Închide</button>
+    </form>
+  </modal>
+
+  <div class="container">
+    <div class="navbar-header"><a class="navbar-brand" href="#"><span class="glyphicon glyphicon-fire"></span></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span
+          class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span
+          class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-menubuilder">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#" class="hvr-underline-reveal" ng-click="go('index.html')">Acasă</a>
+        </li>
+        <li ng-show="!utilizatorulCurrent"><a href="#" class="hvr-underline-reveal" ng-click="go('register.html')">Înregistrare</a>
+        <li ng-show="!utilizatorulCurrent"><a href="#" class="hvr-underline-reveal"
+                                              ng-click="go('login.html')">Logare</a>
+      </ul>
+      <ul ng-show="utilizatorulCurrent" class="nav navbar-nav navbar-right">
+        <li><a href="#" class=""> Utilizator Curent: <span style="color:green">{{utilizatorulCurrent}}</span> </a></li>
+        <li><a href="#" class="hvr-underline-reveal" ng-click="toggleModal()">Ieșire</a></li>
+        <!-- <li><a href="#" class="hvr-underline-reveal" ng-click="logout()">Iesire</a> </li> -->
+
+      </ul>
+
+    </div>
+  </div>
+</div>
+
